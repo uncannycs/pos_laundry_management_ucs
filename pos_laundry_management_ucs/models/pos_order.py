@@ -7,39 +7,12 @@ from odoo import models, fields, api, _
 class PosSession(models.Model):
     _inherit = 'pos.session'
 
-    def _pos_ui_models_to_load(self):
-        models_list = super()._pos_ui_models_to_load()
+    @api.model
+    def _load_pos_data_models(self, config_id):
+        models_list = super()._load_pos_data_models(config_id)
         if 'laundry.washing.type' not in models_list:
             models_list.append('laundry.washing.type')
         return models_list
-
-    def _loader_params_laundry_washing_type(self):
-        return {
-            'search_params': {
-                'domain': [('active', '=', True)],
-                'fields': ['id', 'name', 'extra_charge'],
-            }
-        }
-
-    def _get_pos_ui_laundry_washing_type(self, params):
-        return self.env['laundry.washing.type'].search_read(**params['search_params'])
-
-    def _loader_params_pos_config(self):
-        result = super()._loader_params_pos_config()
-        fields = result['search_params']['fields']
-        if fields:
-            for f in ['enable_laundry', 'default_urgent_fee', 'default_delivery_fee']:
-                if f not in fields:
-                    fields.append(f)
-        return result
-
-    def _loader_params_product_product(self):
-        result = super()._loader_params_product_product()
-        fields = result['search_params']['fields']
-        for f in ['is_laundry_product', 'laundry_washing_type_ids', 'laundry_charge']:
-            if f not in fields:
-                fields.append(f)
-        return result
 
 
 class PosOrder(models.Model):
@@ -139,6 +112,15 @@ class PosOrderLine(models.Model):
 
     washing_type_id = fields.Many2one('laundry.washing.type', string='Washing Type')
     laundry_item_note = fields.Char(string='Garment Note')
+
+    @api.model
+    def _load_pos_data_fields(self, config_id):
+        params = super()._load_pos_data_fields(config_id)
+        res = list(params) if params else []
+        for field in ['washing_type_id', 'laundry_item_note']:
+            if field not in res:
+                res.append(field)
+        return res
 
     @api.model
     def _order_line_fields(self, line, session_id=None):

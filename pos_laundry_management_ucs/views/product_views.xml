@@ -25,7 +25,7 @@
     <record id="action_laundry_products" model="ir.actions.act_window">
         <field name="name">Laundry Products &amp; Services</field>
         <field name="res_model">product.product</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="domain">[('is_laundry_product', '=', True)]</field>
         <field name="context">{'default_is_laundry_product': True, 'default_available_in_pos': True}</field>
         <field name="help" type="html">

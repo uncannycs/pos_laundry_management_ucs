@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-
-    <t t-name="pos_laundry_management_ucs.LaundryDetailsButton">
-        <button class="control-button btn btn-light rounded-0 fw-bolder laundry-btn" t-on-click="onClick">
-            <i class="fa fa-refresh me-1"/>
-            <span>Laundry Details</span>
-            <span t-if="currentOrder?.is_urgent" class="laundry-badge ms-1">URGENT</span>
-        </button>
+    <t t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//SelectPartnerButton" position="after">
+            <button t-if="this.pos.config.enable_laundry and !props.showRemainingButtons"
+                    class="btn btn-light btn-lg lh-lg laundry-btn"
+                    t-on-click="() => this.clickLaundryDetails()">
+                <i class="fa fa-refresh me-1"/> Laundry Details
+                <span t-if="currentOrder?.is_urgent" class="laundry-badge">URGENT</span>
+            </button>
+            <button t-if="this.pos.config.enable_laundry and !props.showRemainingButtons"
+                    class="btn btn-light btn-lg lh-lg ms-1"
+                    t-on-click="() => this.clickWashingType()">
+                <i class="fa fa-tag me-1"/> Garment Service
+            </button>
+        </xpath>
+        <xpath expr="//div[hasclass('control-buttons-modal')]" position="inside">
+            <button t-if="this.pos.config.enable_laundry"
+                    class="btn btn-secondary btn-lg py-5"
+                    t-on-click="() => this.clickLaundryDetails()">
+                <i class="fa fa-refresh me-2"/> Laundry Details
+            </button>
+            <button t-if="this.pos.config.enable_laundry"
+                    class="btn btn-secondary btn-lg py-5"
+                    t-on-click="() => this.clickWashingType()">
+                <i class="fa fa-tag me-2"/> Garment Service
+            </button>
+        </xpath>
     </t>
-
-    <t t-name="pos_laundry_management_ucs.GarmentServiceButton">
-        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">
-            <i class="fa fa-tag me-1"/>
-            <span>Garment Service</span>
-        </button>
-    </t>
-
 </templates>

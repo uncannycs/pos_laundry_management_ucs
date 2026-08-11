@@ -1,49 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <t t-name="pos_laundry_management_ucs.LaundryOrderPopup">
-        <div class="popup">
-            <div class="modal-header">
-                <h4 class="modal-title">Laundry Order Options</h4>
-            </div>
-            <div class="modal-body text-start">
+        <Dialog title="'Laundry Order Options'">
+            <div class="laundry-popup-content p-2">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Expected Delivery Date &amp; Time</label>
                     <input type="datetime-local" class="form-control" t-model="state.expected_delivery_date"/>
                 </div>
+
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" id="urgentSwitch" t-model="state.is_urgent"/>
                     <label class="form-check-label fw-bold" for="urgentSwitch">
                         Express / Urgent Processing
                     </label>
                 </div>
+
                 <div class="form-check form-switch mb-3">
                     <input class="form-check-input" type="checkbox" id="deliverySwitch" t-model="state.is_home_delivery"/>
                     <label class="form-check-label fw-bold" for="deliverySwitch">
                         Home Delivery Required
                     </label>
                 </div>
+
                 <div class="mb-3">
                     <label class="form-label fw-bold">Special Laundry Instructions / Notes</label>
                     <textarea class="form-control" rows="3" placeholder="Enter any general notes or customer preferences..." t-model="state.laundry_note"></textarea>
                 </div>
             </div>
-            <footer class="footer footer-flex modal-footer">
-                <div class="button confirm highlight btn btn-lg btn-primary" t-on-click="confirm">
-                    Confirm
-                </div>
-                <div class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
-                    Cancel
-                </div>
-            </footer>
-        </div>
+            <t t-slot="footer">
+                <button class="btn btn-primary" t-on-click="confirm">Confirm</button>
+                <button class="btn btn-secondary ms-2" t-on-click="props.close">Cancel</button>
+            </t>
+        </Dialog>
     </t>
 
     <t t-name="pos_laundry_management_ucs.LaundryLinePopup">
-        <div class="popup">
-            <div class="modal-header">
-                <h4 class="modal-title">Garment Service &amp; Notes</h4>
-            </div>
-            <div class="modal-body text-start">
+        <Dialog title="'Garment Service &amp; Notes'">
+            <div class="laundry-popup-content p-2">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Washing / Service Type</label>
                     <select class="form-select" t-model="state.washing_type_id">
@@ -55,19 +48,16 @@
                         </t>
                     </select>
                 </div>
+
                 <div class="mb-3">
                     <label class="form-label fw-bold">Garment Specific Notes</label>
-                    <input type="text" class="form-control" placeholder="e.g. Stain on collar..." t-model="state.laundry_item_note"/>
+                    <input type="text" class="form-control" placeholder="e.g. Stain on collar, delicate fabric, double starch..." t-model="state.laundry_item_note"/>
                 </div>
             </div>
-            <footer class="footer footer-flex modal-footer">
-                <div class="button confirm highlight btn btn-lg btn-primary" t-on-click="confirm">
-                    Save Service
-                </div>
-                <div class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
-                    Cancel
-                </div>
-            </footer>
-        </div>
+            <t t-slot="footer">
+                <button class="btn btn-primary" t-on-click="confirm">Save Service</button>
+                <button class="btn btn-secondary ms-2" t-on-click="props.close">Cancel</button>
+            </t>
+        </Dialog>
     </t>
 </templates>

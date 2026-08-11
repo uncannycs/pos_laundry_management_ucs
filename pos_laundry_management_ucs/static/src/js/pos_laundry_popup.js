@@ -1,65 +1,67 @@
-/** @odoo-module **/
-
-import { AbstractAwaitablePopup } from "@point_of_sale/app/popup/abstract_awaitable_popup";
-import { useState } from "@odoo/owl";
+import { Component, useState } from "@odoo/owl";
+import { Dialog } from "@web/core/dialog/dialog";
 import { usePos } from "@point_of_sale/app/store/pos_hook";
 import { _t } from "@web/core/l10n/translation";
 
-export class LaundryOrderPopup extends AbstractAwaitablePopup {
+export class LaundryOrderPopup extends Component {
+    static components = { Dialog };
     static template = "pos_laundry_management_ucs.LaundryOrderPopup";
-    static defaultProps = {
-        title: _t("Laundry Order Options"),
-        order: null,
+    static props = {
+        close: Function,
+        getPayload: Function,
+        order: Object,
     };
 
     setup() {
-        super.setup();
         this.pos = usePos();
         this.state = useState({
-            expected_delivery_date: this.props.order ? (this.props.order.expected_delivery_date || "") : "",
-            laundry_note: this.props.order ? (this.props.order.laundry_note || "") : "",
-            is_urgent: this.props.order ? (this.props.order.is_urgent || false) : false,
-            is_home_delivery: this.props.order ? (this.props.order.is_home_delivery || false) : false,
+            expected_delivery_date: this.props.order.expected_delivery_date || "",
+            laundry_note: this.props.order.laundry_note || "",
+            is_urgent: this.props.order.is_urgent || false,
+            is_home_delivery: this.props.order.is_home_delivery || false,
         });
     }
 
-    getPayload() {
-        return {
+    confirm() {
+        this.props.getPayload({
             expected_delivery_date: this.state.expected_delivery_date,
             laundry_note: this.state.laundry_note,
             is_urgent: this.state.is_urgent,
             is_home_delivery: this.state.is_home_delivery,
-        };
+        });
+        this.props.close();
     }
 }
 
-export class LaundryLinePopup extends AbstractAwaitablePopup {
+export class LaundryLinePopup extends Component {
+    static components = { Dialog };
     static template = "pos_laundry_management_ucs.LaundryLinePopup";
-    static defaultProps = {
-        title: _t("Garment Service & Notes"),
-        line: null,
-        washingTypes: [],
+    static props = {
+        close: Function,
+        getPayload: Function,
+        line: Object,
+        washingTypes: Array,
     };
 
     setup() {
-        super.setup();
         this.pos = usePos();
-        const initialType = (this.props.line && this.props.line.washing_type_id) 
+        const initialType = this.props.line.washing_type_id 
             ? (this.props.line.washing_type_id.id || this.props.line.washing_type_id) 
             : "";
         this.state = useState({
             washing_type_id: initialType,
-            laundry_item_note: this.props.line ? (this.props.line.laundry_item_note || "") : "",
+            laundry_item_note: this.props.line.laundry_item_note || "",
         });
     }
 
-    getPayload() {
+    confirm() {
         const selectedType = this.props.washingTypes.find(
             (t) => t.id === parseInt(this.state.washing_type_id)
         ) || false;
-        return {
+        this.props.getPayload({
             washing_type_id: selectedType,
             laundry_item_note: this.state.laundry_item_note,
-        };
+        });
+        this.props.close();
     }
 }

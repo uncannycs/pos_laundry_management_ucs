@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Laundry Washing Type Tree View -->
-    <record id="view_laundry_washing_type_tree" model="ir.ui.view">
-        <field name="name">laundry.washing.type.tree</field>
+    <!-- Laundry Washing Type List View -->
+    <record id="view_laundry_washing_type_list" model="ir.ui.view">
+        <field name="name">laundry.washing.type.list</field>
         <field name="model">laundry.washing.type</field>
         <field name="arch" type="xml">
-            <tree string="Washing Types" editable="bottom">
+            <list string="Washing Types" editable="bottom">
                 <field name="name"/>
                 <field name="code"/>
                 <field name="extra_charge" widget="monetary"/>
                 <field name="company_id" groups="base.group_multi_company"/>
                 <field name="active" widget="boolean_toggle"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -59,7 +59,7 @@
     <record id="action_laundry_washing_type" model="ir.actions.act_window">
         <field name="name">Washing &amp; Service Types</field>
         <field name="res_model">laundry.washing.type</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a new Washing or Service Type!
