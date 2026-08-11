@@ -27,7 +27,7 @@
                     <textarea class="form-control" rows="3" placeholder="Enter any general notes or customer preferences..." t-model="state.laundry_note"></textarea>
                 </div>
             </div>
-            <t t-slot="footer">
+            <t t-set-slot="footer">
                 <button class="btn btn-primary" t-on-click="confirm">Confirm</button>
                 <button class="btn btn-secondary ms-2" t-on-click="props.close">Cancel</button>
             </t>
@@ -54,7 +54,7 @@
                     <input type="text" class="form-control" placeholder="e.g. Stain on collar, delicate fabric, double starch..." t-model="state.laundry_item_note"/>
                 </div>
             </div>
-            <t t-slot="footer">
+            <t t-set-slot="footer">
                 <button class="btn btn-primary" t-on-click="confirm">Save Service</button>
                 <button class="btn btn-secondary ms-2" t-on-click="props.close">Cancel</button>
             </t>

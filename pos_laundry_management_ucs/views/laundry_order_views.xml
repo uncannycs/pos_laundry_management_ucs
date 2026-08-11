@@ -165,7 +165,7 @@
                 <separator/>
                 <filter string="Urgent Orders" name="urgent" domain="[('is_urgent', '=', True)]"/>
                 <filter string="Home Delivery" name="delivery" domain="[('is_home_delivery', '=', True)]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Customer" name="group_partner" context="{'group_by': 'partner_id'}"/>
                     <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
                     <filter string="Order Date" name="group_order_date" context="{'group_by': 'order_date'}"/>

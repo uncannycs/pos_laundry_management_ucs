@@ -3,13 +3,13 @@
 
 {
     'name': 'POS Laundry Management System UCS | POS Laundry Management | POS Dry Cleaning | Laundry Order Tracking | POS Laundry Receipt',
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Point of Sale/Laundry',
-    'summary': 'Comprehensive POS Laundry Management System for Odoo 18 with full POS integration, service configuration, laundry workflow, urgent/delivery surcharges, and QWeb reports.',
+    'summary': 'Comprehensive POS Laundry Management System for Odoo 19 with full POS integration, service configuration, laundry workflow, urgent/delivery surcharges, and QWeb reports.',
     'description': """
         POS Laundry Management System UCS
         ==================================
-        This module integrates complete laundry management operations natively with Odoo 18 Point of Sale (POS) and Backend ERP.
+        This module integrates complete laundry management operations natively with Odoo 19 Point of Sale (POS) and Backend ERP.
 
         Key Features:
         -------------
