@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_laundry_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.laundry.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_laundry_orders" type="object" class="oe_stat_button" icon="fa-archive">
+                    <div class="o_stat_info">
+                        <field name="laundry_order_count" widget="statinfo"/>
+                        <span class="o_stat_text">Laundry Orders</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Laundry Management Main Menu under Point of Sale -->
+    <menuitem id="menu_laundry_management_root"
+              name="Laundry Management"
+              parent="point_of_sale.menu_point_root"
+              sequence="25"/>
+
+    <!-- Laundry Orders Menu -->
+    <menuitem id="menu_laundry_order"
+              name="Laundry Orders"
+              parent="menu_laundry_management_root"
+              action="action_laundry_order"
+              sequence="10"/>
+
+    <!-- Washing & Service Types Menu -->
+    <menuitem id="menu_laundry_washing_type"
+              name="Washing &amp; Service Types"
+              parent="menu_laundry_management_root"
+              action="action_laundry_washing_type"
+              sequence="20"/>
+
+    <!-- Laundry Products Menu -->
+    <menuitem id="menu_laundry_products"
+              name="Laundry Products &amp; Services"
+              parent="menu_laundry_management_root"
+              action="action_laundry_products"
+              sequence="30"/>
+</odoo>

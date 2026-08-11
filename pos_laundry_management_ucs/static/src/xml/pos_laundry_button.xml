@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_laundry_management_ucs.LaundryDetailsButton">
+        <button class="control-button btn btn-light rounded-0 fw-bolder laundry-btn" t-on-click="onClick">
+            <i class="fa fa-refresh me-1"/>
+            <span>Laundry Details</span>
+            <span t-if="currentOrder?.is_urgent" class="laundry-badge ms-1">URGENT</span>
+        </button>
+    </t>
+
+    <t t-name="pos_laundry_management_ucs.GarmentServiceButton">
+        <button class="control-button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">
+            <i class="fa fa-tag me-1"/>
+            <span>Garment Service</span>
+        </button>
+    </t>
+
+</templates>

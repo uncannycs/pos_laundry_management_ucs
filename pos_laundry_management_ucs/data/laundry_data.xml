@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="washing_type_dry_clean" model="laundry.washing.type">
+            <field name="name">Dry Cleaning</field>
+            <field name="extra_charge">5.0</field>
+        </record>
+
+        <record id="washing_type_steam_iron" model="laundry.washing.type">
+            <field name="name">Steam Ironing</field>
+            <field name="extra_charge">2.0</field>
+        </record>
+
+        <record id="washing_type_wash_fold" model="laundry.washing.type">
+            <field name="name">Wash &amp; Fold</field>
+            <field name="extra_charge">3.0</field>
+        </record>
+
+        <record id="washing_type_stain_removal" model="laundry.washing.type">
+            <field name="name">Stain Removal</field>
+            <field name="extra_charge">4.0</field>
+        </record>
+    </data>
+</odoo>

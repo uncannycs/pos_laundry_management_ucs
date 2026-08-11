@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_laundry_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.laundry.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Laundry Settings" name="laundry_settings">
+                    <group>
+                        <group string="Laundry Product Configuration">
+                            <field name="is_laundry_product" widget="boolean_toggle"/>
+                            <field name="laundry_charge" widget="monetary" invisible="not is_laundry_product"/>
+                        </group>
+                        <group string="Allowed Washing Services" invisible="not is_laundry_product">
+                            <field name="laundry_washing_type_ids" widget="many2many_tags" placeholder="Select allowed washing types..."/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Laundry Products Action (Filtered) -->
+    <record id="action_laundry_products" model="ir.actions.act_window">
+        <field name="name">Laundry Products &amp; Services</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_laundry_product', '=', True)]</field>
+        <field name="context">{'default_is_laundry_product': True, 'default_available_in_pos': True}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Laundry Product!
+            </p>
+            <p>
+                Add garments or laundry services available in Point of Sale.
+            </p>
+        </field>
+    </record>
+</odoo>

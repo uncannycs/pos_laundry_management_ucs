@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <xpath expr="//ReceiptHeader" position="after">
+            <div t-if="props.data.is_laundry_order" class="laundry-receipt-header">
+                <div class="laundry-receipt-title">LAUNDRY SERVICE WORK TICKET</div>
+                <t t-if="props.data.expected_delivery_date">
+                    <div class="text-center"><strong>Expected Delivery:</strong> <t t-esc="props.data.expected_delivery_date"/></div>
+                </t>
+                <div t-if="props.data.is_urgent" class="text-center fw-bold text-danger">*** EXPRESS / URGENT ***</div>
+                <div t-if="props.data.is_home_delivery" class="text-center fw-bold">*** HOME DELIVERY ***</div>
+                <div t-if="props.data.laundry_note" class="text-center text-muted">Instructions: <t t-esc="props.data.laundry_note"/></div>
+                <div class="text-center">--------------------------------</div>
+            </div>
+        </xpath>
+        <xpath expr="//Orderline" position="inside">
+            <t t-if="line.washing_type_name">
+                <div class="laundry-line-info">Service: <t t-esc="line.washing_type_name"/></div>
+            </t>
+            <t t-if="line.laundry_item_note">
+                <div class="laundry-line-info">Garment Note: <t t-esc="line.laundry_item_note"/></div>
+            </t>
+        </xpath>
+    </t>
+</templates>

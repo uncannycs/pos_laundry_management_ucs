@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_laundry_washing_type_pos_user,laundry.washing.type.pos.user,model_laundry_washing_type,point_of_sale.group_pos_user,1,0,0,0
+access_laundry_washing_type_internal_user,laundry.washing.type.internal.user,model_laundry_washing_type,base.group_user,1,0,0,0
+access_laundry_washing_type_user,laundry.washing.type.user,model_laundry_washing_type,group_laundry_user,1,0,0,0
+access_laundry_washing_type_manager,laundry.washing.type.manager,model_laundry_washing_type,group_laundry_manager,1,1,1,1
+access_laundry_order_pos_user,laundry.order.pos.user,model_laundry_order,point_of_sale.group_pos_user,1,1,1,0
+access_laundry_order_internal_user,laundry.order.internal.user,model_laundry_order,base.group_user,1,1,1,0
+access_laundry_order_user,laundry.order.user,model_laundry_order,group_laundry_user,1,1,1,0
+access_laundry_order_manager,laundry.order.manager,model_laundry_order,group_laundry_manager,1,1,1,1
+access_laundry_order_line_pos_user,laundry.order.line.pos.user,model_laundry_order_line,point_of_sale.group_pos_user,1,1,1,0
+access_laundry_order_line_internal_user,laundry.order.line.internal.user,model_laundry_order_line,base.group_user,1,1,1,0
+access_laundry_order_line_user,laundry.order.line.user,model_laundry_order_line,group_laundry_user,1,1,1,0
+access_laundry_order_line_manager,laundry.order.line.manager,model_laundry_order_line,group_laundry_manager,1,1,1,1
+access_laundry_order_cancel_wizard_pos_user,laundry.order.cancel.wizard.pos.user,model_laundry_order_cancel_wizard,point_of_sale.group_pos_user,1,1,1,1
+access_laundry_order_cancel_wizard_internal_user,laundry.order.cancel.wizard.internal.user,model_laundry_order_cancel_wizard,base.group_user,1,1,1,1
+access_laundry_order_cancel_wizard_user,laundry.order.cancel.wizard.user,model_laundry_order_cancel_wizard,group_laundry_user,1,1,1,1

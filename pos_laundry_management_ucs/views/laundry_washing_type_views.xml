@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Laundry Washing Type Tree View -->
+    <record id="view_laundry_washing_type_tree" model="ir.ui.view">
+        <field name="name">laundry.washing.type.tree</field>
+        <field name="model">laundry.washing.type</field>
+        <field name="arch" type="xml">
+            <tree string="Washing Types" editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="extra_charge" widget="monetary"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Laundry Washing Type Form View -->
+    <record id="view_laundry_washing_type_form" model="ir.ui.view">
+        <field name="name">laundry.washing.type.form</field>
+        <field name="model">laundry.washing.type</field>
+        <field name="arch" type="xml">
+            <form string="Washing Type">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="extra_charge" widget="monetary"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" placeholder="Service description or notes..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Laundry Washing Type Search View -->
+    <record id="view_laundry_washing_type_search" model="ir.ui.view">
+        <field name="name">laundry.washing.type.search</field>
+        <field name="model">laundry.washing.type</field>
+        <field name="arch" type="xml">
+            <search string="Search Washing Types">
+                <field name="name"/>
+                <field name="code"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Laundry Washing Type Action -->
+    <record id="action_laundry_washing_type" model="ir.actions.act_window">
+        <field name="name">Washing &amp; Service Types</field>
+        <field name="res_model">laundry.washing.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Washing or Service Type!
+            </p>
+            <p>
+                Define laundry service categories (e.g., Dry Clean, Wash &amp; Fold, Ironing) and their extra charges.
+            </p>
+        </field>
+    </record>
+</odoo>

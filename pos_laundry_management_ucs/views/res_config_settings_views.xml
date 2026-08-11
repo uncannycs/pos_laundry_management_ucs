@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_laundry_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.form.laundry.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_interface_section']" position="after">
+                <block title="Laundry Management" id="laundry_management_settings">
+                    <setting help="Enable laundry order handling, washing options, delivery dates and ticket reports in POS.">
+                        <field name="pos_enable_laundry"/>
+                        <div class="content-group mt-2" invisible="not pos_enable_laundry">
+                            <div class="row">
+                                <label for="pos_default_delivery_fee" class="col-lg-4 o_light_label"/>
+                                <field name="pos_default_delivery_fee" widget="monetary"/>
+                            </div>
+                            <div class="row mt-2">
+                                <label for="pos_default_urgent_fee" class="col-lg-4 o_light_label"/>
+                                <field name="pos_default_urgent_fee" widget="monetary"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_laundry_order_cancel_wizard_form" model="ir.ui.view">
+        <field name="name">laundry.order.cancel.wizard.form</field>
+        <field name="model">laundry.order.cancel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Laundry Order">
+                <sheet>
+                    <group>
+                        <field name="order_id" readonly="1"/>
+                        <field name="cancel_reason" placeholder="Please enter the reason for cancelling this order..."/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm Cancellation" name="action_confirm_cancel" type="object" class="btn-danger"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_laundry_order_cancel_wizard" model="ir.actions.act_window">
+        <field name="name">Cancel Laundry Order</field>
+        <field name="res_model">laundry.order.cancel.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
