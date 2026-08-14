@@ -59,7 +59,7 @@
     'installable': True,
     'application': True,
     'auto_install': False,
-    'price': '0',
+    'price': '100',
     'currency': 'USD',
     'images': ['static/description/banner.gif'],
 }
